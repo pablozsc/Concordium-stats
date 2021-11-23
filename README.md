@@ -1,7 +1,7 @@
 # Concordium-stats
 Description of creating a telegram bot for monitoring a node in the Concordium network. 
 
-First of all, I want to say thank you to my inspirer, who led me to this idea. This is his entire script, which I copied and transferred (not yet completely) to us. Thanks, Geordie-R. I do not demand anything in return, I am simply ready to help each person to establish this solution.
+First of all, I want to say thank you to my inspirer, who led me to this idea. This is his entire script, which I copied and transferred (not yet completely) to us.  I do not demand anything in return, I am simply ready to help each person to establish this solution. Thanks, Geordie-R.
 
 Now there are only 3 metrics working in the script - CPU, RAM and Disk usage. I have a great desire to add to the script the possibility of alerts for the length of the chain and the number of peers. I would be very happy if someone could help me to refine these two metrics.
 
