@@ -29,6 +29,7 @@ mkdir concordium-stats
 cd concordium-stats
 wget -O installstats.sh https://github.com/pablozsc/Concordium-stats/blob/main/installstats.sh
 sudo chmod +x installstats.sh && ./installstats.sh
+
 ```
 
 You will be asked a series of questions regarding the metrics. Each answer will have a suggested answer. Please type in your own answer to each question pressing enter after each one. Once thats finished lets download the main stats.sh script below.
@@ -36,6 +37,7 @@ You will be asked a series of questions regarding the metrics. Each answer will 
 ```
 wget -O stats.sh https://github.com/pablozsc/Concordium-stats/blob/main/stats.sh
 sudo chmod +x stats.sh && chown $USER:$USER stats.sh
+
 ```
 
 ## Step 4: Test your Telegram bot
@@ -45,6 +47,7 @@ Test that your telegram bot is setup correctly by running the following
 ```
 wget -O telegramtest.sh https://github.com/pablozsc/Concordium-stats/blob/main/telegramtest.sh
 sudo chmod +x telegramtest.sh && ./telegramtest.sh
+
 ```
 
 ## Step 5: Alerts test
@@ -53,6 +56,7 @@ You can manually edit the config.ini file and set the required metrics in order 
 
 ```
 sudo nano ~/concordium-stats/config.ini
+
 ```
 Once you have made the changes press Ctrl + X and then press Y to save.
 
@@ -60,4 +64,5 @@ Once you have made the changes press Ctrl + X and then press Y to save.
 Now just wait for 1 minute cycle, or you can manually run the script stats.sh to bypass the schedule.
 ```
 ~/concordium-stats/stats.sh
+
 ```
