@@ -118,7 +118,7 @@ fi
     block_diff_threshold="$global_value"
   else
     not_setup=1
-    read -p "WHAT IS THE MAXIMUM AMOUNT OF BLOCKS DIFFERENCE BETWEEN YOUR BACKER AND CONCORDIUM'S BACKER YOU WILL ALLOW BEFORE BEING NOTIFIED. ALLOW FOR SLIGHT LAG e.g. 4: " -e block_diff_threshold
+    read -p "WHAT IS THE MAXIMUM AMOUNT OF BLOCKS DIFFERENCE BETWEEN YOUR NODE AND CURRENT CHAIN LENGTH YOU WILL ALLOW BEFORE BEING NOTIFIED. ALLOW FOR SLIGHT LAG e.g. 4: " -e block_diff_threshold
     echo "block_diff_threshold=$block_diff_threshold" >> "$config_file"
     echo
   fi
