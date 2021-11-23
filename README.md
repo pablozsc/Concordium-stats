@@ -10,7 +10,7 @@ For now there are only 3 metrics working in the script - CPU, RAM and Disk usage
 
 We create our own new bot, so we go to the [@Botfather](https://t.me/BotFather). Botfather is the one bot to rule them all. Use it to create new bot accounts and manage your existing bots. 
 
-- launch it and give it the /newbot command
+- launch it and give it the `/newbot` command
 - When asked for a name for your new bot choose something that ends with the word bot, so for example YOUR_NODE_NAMEbot
 - If your chosen name is available, BotFather will then send you a TOKEN
 - Save this TOKEN as you will be asked for it once you execute the installstats.sh script
