@@ -35,7 +35,7 @@ sudo chmod +x installstats.sh && ./installstats.sh
 You will be asked a series of questions regarding the metrics. Each answer will have a suggested answer. Please type in your own answer to each question pressing enter after each one. Once thats finished lets download the main stats.sh script below.
 
 ```
-wget -O stats.sh https://github.com/pablozsc/Concordium-stats/blob/main/stats.sh
+wget -O stats.sh https://raw.githubusercontent.com/pablozsc/Concordium-stats/blob/main/stats.sh
 sudo chmod +x stats.sh && chown $USER:$USER stats.sh
 
 ```
@@ -45,7 +45,7 @@ sudo chmod +x stats.sh && chown $USER:$USER stats.sh
 Test that your telegram bot is setup correctly by running the following
 
 ```
-wget -O telegramtest.sh https://github.com/pablozsc/Concordium-stats/blob/main/telegramtest.sh
+wget -O telegramtest.sh https://raw.githubusercontent.com/pablozsc/Concordium-stats/blob/main/telegramtest.sh
 sudo chmod +x telegramtest.sh && ./telegramtest.sh
 
 ```
