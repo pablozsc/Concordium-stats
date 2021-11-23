@@ -27,7 +27,7 @@ Visit my dedicated telegram bot here [@CCDStatsChatID_bot](https://t.me/CCDStats
 cd ~
 mkdir concordium-stats
 cd concordium-stats
-wget -O installstats.sh https://github.com/pablozsc/Concordium-stats/blob/main/installstats.sh
+wget -O installstats.sh https://raw.githubusercontent.com/pablozsc/Concordium-stats/master/installstats.sh
 sudo chmod +x installstats.sh && ./installstats.sh
 
 ```
