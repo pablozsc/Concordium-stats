@@ -15,7 +15,8 @@ We create our own new bot, so we go to the [@Botfather](https://t.me/BotFather).
 - If your chosen name is available, BotFather will then send you a TOKEN
 - Save this TOKEN as you will be asked for it once you execute the installstats.sh script
 
-Once your bot created, you can customize it with your own style, if you want. Let's go further
+Once your bot created, you can customize it with your own style, if you want. Do not forget to activate it in your telegram - just find it and press start
+Let's go further
 
 ## Step 2: Obtain Your Chat Identification Number
 
