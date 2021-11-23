@@ -45,6 +45,7 @@ Test that your telegram bot is setup correctly by running the following
 ```
 wget -O telegramtest.sh https://raw.githubusercontent.com/pablozsc/Concordium-stats/master/telegramtest.sh
 sudo chmod +x telegramtest.sh && ./telegramtest.sh
+
 ```
 
 ## Step 5: Alerts test
