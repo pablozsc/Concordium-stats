@@ -20,7 +20,7 @@ Let's go further
 
 ## Step 2: Obtain Your Chat Identification Number
 
-Visit my dedicated telegram bot here [@CCDStatsChatID_bot](https://t.me/CCDStatsChatID_bot) for collecting your Chat ID that you will be asked for when you run installstats.sh in Step 3 that follows. Note that there may be a delay in responding with your chat_id. But usually everything is fast. You can delete this bot after obtaining your chat_id
+Visit my dedicated telegram bot here [@CCDStatsChatID_bot](https://t.me/CCDStatsChatID_bot) for collecting your Chat ID that you will be asked for when you run installstats.sh in Step 3 that follows. Just send any message to the bot - your Chat_id will be sent back. Note that there may be a delay in responding with your chat_id. But usually everything is fast. You can delete this bot after obtaining your chat_id
 
 ## Step 3: Download & Setup The Scripts Required For Concordium Stats
 
