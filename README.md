@@ -1,6 +1,13 @@
 # Concordium-stats
 Description of creating a telegram bot for monitoring a node in the Concordium network. 
 
+## Features
+- Memory Used Percentage
+- Disk Space Used Percentage
+- CPU Utilization Percentage
+- Node Peer Count
+- Concorium Block Height VS Your Block Height
+
 ## Step 1: bot TOKEN
 
 We create our own new bot, so we go to the [@Botfather](https://t.me/BotFather). Botfather is the one bot to rule them all. Use it to create new bot accounts and manage your existing bots. 
