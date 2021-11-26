@@ -4,6 +4,7 @@ create_dir="$HOME/concordium-stats"
 config_file="$create_dir/config.ini"
 
 # getting concordium client
+cd $create_dir
 wget https://distribution.concordium.software/tools/linux/concordium-client_1.1.1-0
 sudo chmod +x concordium-client_1.1.1-0
 sudo mv concordium-client_1.1.1-0 /usr/bin/concordium-client
@@ -11,8 +12,8 @@ sudo mv concordium-client_1.1.1-0 /usr/bin/concordium-client
 mem_alert=false
 cpu_alert=false
 disk_alert=false
-#peer_alert=false
 block_diff_alert=false
+#peer_alert=false
 #version_alert=false
 #concordium_rpc_address=
 
@@ -136,8 +137,8 @@ echo "$cpu_msg"
 my_block_height=$(concordium-client consensus status | grep "Last finalized block height")
 my_max_block_height=$(echo $my_block_height | awk '{print $5}')
 
-concordium_block_height=$(curl -sS -H "Content-Type: application/json" https://dashboard.mainnet.concordium.software/nodesSummary | jq '.' | grep bestBlockHeight | sed 's/,$//' > BlockHeights.txt)
-concordium_max_block_height=$(awk -v max=0 '{if($1>max){want=$2; max=$1}}END{print $2} ' BlockHeights.txt)
+concordium_block_height=$(curl -sS -H "Content-Type: application/json" https://dashboard.mainnet.concordium.software/nodesSummary | jq '.' | grep bestBlockHeight | sed 's/,$//' > $create_dir/BlockHeights.txt)
+concordium_max_block_height=$(awk -v max=0 '{if($1>max){want=$2; max=$1}}END{print $2} ' $create_dir/BlockHeights.txt)
 
 echo "Concordium Block Height: $concordium_max_block_height - Your Block Height: $my_max_block_height"
 
