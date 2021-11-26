@@ -153,7 +153,7 @@ echo "Concordium Block Height: $max_block_height - Your Block Height: $my_max_bl
 block_diff=$(($max_block_height - $my_max_block_height))
 
 if [[ $block_diff -gt $block_diff_threshold ]]; then
-block_diff_msg="❌ Block difference of $block_diff as CONCORDIUM: $max_block_height AND YOURS IS: $my_max_block_height
+block_diff_msg="❌ Block difference of $block_diff as Concordium: $max_block_height and yours is: $my_max_block_height
 "
 block_diff_alert=true
 else
