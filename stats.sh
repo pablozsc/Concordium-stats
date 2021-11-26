@@ -2,13 +2,6 @@
 
 create_dir="$HOME/concordium-stats"
 config_file="$create_dir/config.ini"
-
-# getting concordium client
-cd $create_dir
-wget https://distribution.concordium.software/tools/linux/concordium-client_1.1.1-0
-sudo chmod +x concordium-client_1.1.1-0
-sudo mv concordium-client_1.1.1-0 /usr/bin/concordium-client
-
 mem_alert=false
 cpu_alert=false
 disk_alert=false
