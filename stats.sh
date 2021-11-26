@@ -12,7 +12,7 @@ mem_alert=false
 cpu_alert=false
 disk_alert=false
 #peer_alert=false
-#block_diff_alert=false
+block_diff_alert=false
 #version_alert=false
 #concordium_rpc_address=
 
@@ -67,6 +67,11 @@ fi
 if get_config_value telegram_chat_id
 then
   telegram_chat_id="$global_value"
+fi
+
+if get_config_value block_diff_threshold
+then
+  block_diff_threshold="$global_value"
 fi
 
 #----------------------------------------------------------------------------------------------------#
@@ -128,12 +133,32 @@ echo "$cpu_msg"
 # CONCORDIUM BLOCK HEIGHT VS YOUR BLOCK HEIGHT                                                       #
 #----------------------------------------------------------------------------------------------------#
 
+my_block_height=$(concordium-client consensus status | grep "Last finalized block height")
+my_max_block_height=$(echo $my_block_height | awk '{print $5}')
+
+concordium_block_height=$(curl -sS -H "Content-Type: application/json" https://dashboard.mainnet.concordium.software/nodesSummary | jq '.' | grep bestBlockHeight | sed 's/,$//' > BlockHeights.txt)
+concordium_max_block_height=$(awk -v max=0 '{if($1>max){want=$2; max=$1}}END{print $2} ' BlockHeights.txt)
+
+echo "Concordium Block Height: $concordium_max_block_height - Your Block Height: $my_max_block_height"
+
+
+block_diff=$(($concordium_max_block_height - $my_max_block_height))
+
+if [[ $block_diff -gt $block_diff_threshold ]]; then
+block_diff_msg="❌ Block difference of $block_diff as CONCORDIUM: $concordium_max_block_height AND YOURS IS: $my_max_block_height
+"
+block_diff_alert=true
+else
+block_diff_msg="Block Difference is within chosen limits"
+fi
+echo "$block_diff_msg"
+
 
 
 alert=false
 
 msg=""
-if $mem_alert || $cpu_alert || $disk_alert
+if $mem_alert || $cpu_alert || $disk_alert || $block_diff_alert
 then
   alert=true
   if $mem_alert
@@ -152,6 +177,12 @@ then
   then
   msg="$msg
    $disk_msg"
+  fi
+
+  if $block_diff_alert
+  then
+  msg="$msg
+  $block_diff_msg"
   fi
 
 
