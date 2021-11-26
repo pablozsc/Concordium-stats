@@ -6,9 +6,8 @@ mem_alert=false
 cpu_alert=false
 disk_alert=false
 block_diff_alert=false
-#peer_alert=false
-#version_alert=false
-#concordium_rpc_address=
+peer_alert=false
+#concordium_grpc_address=
 
 #----------------------------------------------------------------------------------------------------#
 # NOTE: PARAMETERS ARE CONTAINED IN CONFIG.INI                                                       #
@@ -32,6 +31,10 @@ function get_config_value(){
 # FILL PARAMETERS BELOW RETRIEVED FROM CONFIG.INI                                                    #
 #----------------------------------------------------------------------------------------------------#
 
+if get_config_value low_no_of_peers
+then
+  low_no_of_peers="$global_value"
+fi
 
 if get_config_value node_name
 then
@@ -122,24 +125,35 @@ echo "$cpu_msg"
 # PEER COUNT / INFO                                                                                  #
 #----------------------------------------------------------------------------------------------------#
 
+getData=$(curl -s -H "Content-Type: application/json" https://dashboard.mainnet.concordium.software/nodesSummary)
+your_peer_count=$(echo $getData | jq '.[] | select(.nodeName == "'"${node_name}"'").peersCount')
+
+if [[ $your_peer_count -lt $low_no_of_peers ]]; then
+peer_msg="❌ LOW NUMBER OF PEERS: $your_peer_count (min permissible $low_no_of_peers)"
+peer_alert=true
+else
+peer_msg="Peers is ok: $your_peer_count ok"
+fi
+echo "$peer_msg"
+
 
 #----------------------------------------------------------------------------------------------------#
 # CONCORDIUM BLOCK HEIGHT VS YOUR BLOCK HEIGHT                                                       #
 #----------------------------------------------------------------------------------------------------#
 
-my_block_height=$(concordium-client consensus status | grep "Last finalized block height")
-my_max_block_height=$(echo $my_block_height | awk '{print $5}')
+block_height=$(curl -s -H "Content-Type: application/json" https://dashboard.mainnet.concordium.software/nodesSummary)
+max_block_height=$(echo $block_height | jq '[ .[] | .bestBlockHeight ] | max')
 
-concordium_block_height=$(curl -sS -H "Content-Type: application/json" https://dashboard.mainnet.concordium.software/nodesSummary | jq '.' | grep bestBlockHeight | sed 's/,$//' > $create_dir/BlockHeights.txt)
-concordium_max_block_height=$(awk -v max=0 '{if($1>max){want=$2; max=$1}}END{print $2} ' $create_dir/BlockHeights.txt)
+my_block_height=$(curl -s -H "Content-Type: application/json" https://dashboard.mainnet.concordium.software/nodesSummary)
+my_max_block_height=$(echo $my_block_height | jq '.[] | select(.nodeName == "'"${node_name}"'").bestBlockHeight')
 
-echo "Concordium Block Height: $concordium_max_block_height - Your Block Height: $my_max_block_height"
+echo "Concordium Block Height: $max_block_height - Your Block Height: $my_max_block_height"
 
 
-block_diff=$(($concordium_max_block_height - $my_max_block_height))
+block_diff=$(($max_block_height - $my_max_block_height))
 
 if [[ $block_diff -gt $block_diff_threshold ]]; then
-block_diff_msg="❌ Block difference of $block_diff as CONCORDIUM: $concordium_max_block_height AND YOURS IS: $my_max_block_height
+block_diff_msg="❌ Block difference of $block_diff as CONCORDIUM: $max_block_height AND YOURS IS: $my_max_block_height
 "
 block_diff_alert=true
 else
@@ -152,7 +166,7 @@ echo "$block_diff_msg"
 alert=false
 
 msg=""
-if $mem_alert || $cpu_alert || $disk_alert || $block_diff_alert
+if $mem_alert || $cpu_alert || $disk_alert || $block_diff_alert || $peer_alert
 then
   alert=true
   if $mem_alert
@@ -179,6 +193,11 @@ then
   $block_diff_msg"
   fi
 
+  if $peer_alert
+  then
+  msg="$msg
+  $peer_msg"
+  fi
 
 
 fi
