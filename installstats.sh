@@ -16,6 +16,12 @@ create_dir="$HOME/concordium-stats"
 config_file="$create_dir/config.ini"
 not_setup=0
 
+# getting concordium client
+cd $create_dir
+wget https://distribution.concordium.software/tools/linux/concordium-client_1.1.1-0
+sudo chmod +x concordium-client_1.1.1-0
+sudo mv concordium-client_1.1.1-0 /usr/bin/concordium-client
+
 #----------------------------------------------------------------------------------------------------#
 # GLOBAL VALUE IS USED AS A GLOBAL VARIABLE TO RETURN THE RESULT                                     #
 #----------------------------------------------------------------------------------------------------#
