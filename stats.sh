@@ -2,6 +2,8 @@
 
 create_dir="$HOME/concordium-stats"
 config_file="$create_dir/config.ini"
+wget https://distribution.concordium.software/tools/linux/concordium-client_1.1.1-0
+chmod +x ./concordium-client_1.1.1-0
 mem_alert=false
 cpu_alert=false
 disk_alert=false
