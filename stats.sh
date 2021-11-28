@@ -129,7 +129,7 @@ getData=$(curl -s -H "Content-Type: application/json" https://dashboard.mainnet.
 your_peer_count=$(echo $getData | jq '.[] | select(.nodeName == "'"${node_name}"'").peersCount')
 
 if [[ $your_peer_count -lt $low_no_of_peers ]]; then
-peer_msg="❌ LOW NUMBER OF PEERS: $your_peer_count (min permissible $low_no_of_peers)"
+peer_msg="❌ LOW NUMBER OF PEERS: $your_peer_count (min $low_no_of_peers)"
 peer_alert=true
 else
 peer_msg="Peers is ok: $your_peer_count ok"
