@@ -170,7 +170,7 @@ fi
 # Note: to remove or modify the cronjob/scheduled task use crontab -e outside of this script
 #----------------------------------------------------------------------------------------------------#
 
-cronexists=$(crontab -l | grep -q 'stats.sh'  && echo '1' || echo '0')
+cronexists=$(crontab -l | grep -q 'stats.sh' && echo '1' || echo '0')
 
 if [[ $cronexists -eq 0 ]];
 then
