@@ -90,7 +90,7 @@ fi
     node_name="$global_value"
   else
     not_setup=1
-    read -p "TYPE THE NAME OF YOUR CONCORDIUM NODE: " -e node_name
+    read -p "TYPE THE NAME OF YOUR CONCORDIUM MAINNET NODE: " -e node_name
     echo "node_name=$node_name" >> "$config_file"
     echo
   fi
