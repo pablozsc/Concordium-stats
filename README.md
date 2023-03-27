@@ -6,7 +6,7 @@ Description of creating a telegram bot for monitoring a node in the Concordium n
 - Disk Space Used Percentage
 - CPU Utilization Percentage
 - Node Peer Count
-- Concorium Block Height VS Your Block Height
+- Concordium Block Height VS Your Block Height
 
 ## Step 1: bot TOKEN
 
