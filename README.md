@@ -66,3 +66,5 @@ Now just wait for 1 minute cycle, or you can manually run the script stats.sh to
 ```
 ~/concordium-stats/stats.sh
 ```
+
+test1
